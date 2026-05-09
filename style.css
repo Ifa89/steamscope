@@ -1,0 +1,122 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0d1117;
+  --surface:      #161b22;
+  --surface-2:    #1f2937;
+  --border:       #30363d;
+  --text:         #e6edf3;
+  --text-muted:   #8b949e;
+  --blue:         #388bfd;
+  --green:        #3fb950;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo { font-size: 1.2rem; font-weight: 700; color: var(--blue); letter-spacing: -0.5px; }
+.last-updated { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Layout ─────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* ── Profile card ───────────────────────────────────────────────────── */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.avatar { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 2px solid var(--border); }
+.profile-info { flex: 1; }
+.profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); display: inline-block; flex-shrink: 0; }
+.status-dot.offline { background: var(--text-muted); }
+.real-name { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+.profile-link { font-size: 0.8rem; color: var(--text-muted); text-decoration: none; margin-top: 0.3rem; display: inline-block; }
+.profile-link:hover { color: var(--blue); }
+
+/* ── Stat row ───────────────────────────────────────────────────────── */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1.5rem; }
+.stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.4rem; }
+.stat-value { font-size: 2rem; font-weight: 700; line-height: 1; }
+.stat-value .unit { font-size: 0.8rem; font-weight: 400; color: var(--text-muted); margin-left: 2px; }
+.stat-top-game { font-size: 0.95rem; font-weight: 600; line-height: 1.3; padding-top: 4px; }
+
+/* ── Section card ───────────────────────────────────────────────────── */
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.section-header { padding: 0.85rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); }
+
+/* ── Recently played ────────────────────────────────────────────────── */
+.recent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; padding: 1.25rem; }
+.recent-game { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+.recent-game img { width: 64px; height: 64px; border-radius: 6px; object-fit: cover; background: var(--surface-2); }
+.recent-game-name { font-size: 0.78rem; font-weight: 500; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.recent-time { font-size: 0.7rem; color: var(--blue); font-weight: 600; }
+
+/* ── Top games ──────────────────────────────────────────────────────── */
+.game-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+}
+.game-row:last-child { border-bottom: none; }
+.game-row:hover { background: var(--surface-2); }
+.game-icon { width: 40px; height: 40px; border-radius: 4px; object-fit: cover; background: var(--surface-2); flex-shrink: 0; }
+.game-info { flex: 1; min-width: 0; }
+.game-name { font-size: 0.875rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-wrap { height: 4px; background: var(--surface-2); border-radius: 2px; margin-top: 0.4rem; overflow: hidden; }
+.bar { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #388bfd 0%, #a371f7 100%); }
+.game-hours { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+
+/* ── Splash / error ─────────────────────────────────────────────────── */
+.splash { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; gap: 1rem; color: var(--text-muted); }
+.splash-spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
+.error-msg { color: #f85149; }
+.retry-btn { padding: 0.5rem 1.2rem; background: var(--blue); color: #fff; border: none; border-radius: 6px; font-size: 0.875rem; cursor: pointer; margin-top: 0.5rem; }
+.retry-btn:hover { opacity: 0.85; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 560px) {
+  .profile-card { flex-direction: column; text-align: center; }
+  .container { padding: 1rem; }
+  .header { padding: 0.75rem 1rem; }
+}
