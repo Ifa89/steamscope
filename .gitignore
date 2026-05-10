@@ -142,5 +142,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-# Personal config — contains your Functions URL, never commit this
-config.js
+# local.settings.json contains secrets — never commit it
+local.settings.json
