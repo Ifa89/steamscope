@@ -1,6 +1,8 @@
 'use strict';
 
-const API_URL = 'https://steamscope-func.azurewebsites.net/api/stats';
+const API_URL =
+  window.STEAMSCOPE_CONFIG?.apiUrl ||
+  'http://localhost:7071/api/stats'; // fallback for local dev
 
 function fmt(iso) {
   return new Date(iso).toLocaleString(undefined, {

@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<your-storage-account-connection-string>",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "STEAM_API_KEY": "<your-steam-web-api-key>",
+    "STEAM_VANITY_URL": "<your-steam-vanity-url>",
+    "STEAM_ID": "<your-steam64-id>",
+    "COSMOS_ENDPOINT": "<your-cosmos-db-endpoint>",
+    "COSMOS_KEY": "<your-cosmos-db-primary-key>",
+    "COSMOS_DB_NAME": "steamscope-db",
+    "COSMOS_CONTAINER_NAME": "snapshots"
+  }
+}
